@@ -5,5 +5,7 @@ from . import views
 
 urlpatterns = [
     # home page route/path (root path, method we want to connect to in the views, name to access the path)
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    # After creating the templates created, need to create the route/path to About page
+    path('about', views.about, name='about')
 ]
