@@ -126,5 +126,7 @@ USE_TZ = True
 # that's what we're defining here
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-#
-STATICFILES_DIRS =
+# Next, need to point Django to the location of our new static directory
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'btre_project/static')
+]
