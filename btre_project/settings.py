@@ -118,4 +118,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# We just added a 'static' folder within the btre_project dir.
+# Now we need to add some things. First we add STATIC_ROOT. The idea of
+# this is when you deploy your application you run a command called
+# collect static and it goes into all of your apps and if it has a 'static'
+# folder it takes evrything out and puts it into a ROOT STATIC folder, so
+# that's what we're defining here
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+#
+STATICFILES_DIRS =
