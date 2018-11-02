@@ -35,5 +35,6 @@ from django.urls import path, include
 urlpatterns = [
     # if you want to go straight to home page then use ''
     path('', include('pages.urls')),
+    path('listings/', include('listings.urls')),
     path('admin/', admin.site.urls),
 ]
