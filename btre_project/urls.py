@@ -31,10 +31,28 @@ from django.contrib import admin
 # Need to import include() from django.urls so you can link the path to the
 # urls.py file inside the pages app:
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # if you want to go straight to home page then use ''
     path('', include('pages.urls')),
     path('listings/', include('listings.urls')),
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# FROM PREVIOUS APP CODE:
+# Modified to be more explicit. Helps others who are reading our code. We're only adding this on when
+# we're in DEBUG mode.
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
+# Original snippet from django's docs for media:
+# from django.conf import settings
+# from django.conf.urls.static import static
+
+# urlpatterns = [
+#     # ... the rest of your URLconf goes here ...
+# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
