@@ -75,11 +75,16 @@ WSGI_APPLICATION = 'btre_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# Now that we've created a Postgres DB up and going, we need to
+# update parameters here to connect to Postgres:
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'btredb',
+        'USER': 'postgres',
+        'PASSWORD': 'zero5two9',
+        'HOST': 'localhost'
     }
 }
 
