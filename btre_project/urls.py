@@ -45,9 +45,9 @@ urlpatterns = [
 # FROM PREVIOUS APP CODE:
 # Modified to be more explicit. Helps others who are reading our code. We're only adding this on when
 # we're in DEBUG mode.
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL,
+#                           document_root=settings.MEDIA_ROOT)
 
 # Original snippet from django's docs for media:
 # from django.conf import settings
