@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 # Now e've setup the database, added some listings data, configured the admin area
 # **IMPORTANT** The idea here is to fetch our listings using our model and then we
 # insert it into our template, and then we can simply loop through and output the
@@ -13,19 +14,25 @@ from .models import Listing
 
 
 def index(request):
-    # view we want to render
-    # fetch listings from database
+    """view we want to render fetch listings from database"""
     listings = Listing.objects.all()
+
+    paginator = Paginator(listings, 3)
+    page = request.GET.get('page')
+    paged_listings = paginator.get_page(page)
+
     # create a dict to store listings we want to pass to the template
     context = {
-        'listings': listings
+        'listings': paged_listings
     }
     return render(request, 'listings/listings.html', context)
 
 
-def listing(request):
+def listing(request, listing_id):
+    """Need to pass listing_id parameter (above)"""
     return render(request, 'listings/listing.html')
 
 
 def search(request):
+    """Haven't updated"""
     return render(request, 'listings/search.html')
