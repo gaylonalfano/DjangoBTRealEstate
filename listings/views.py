@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 # Now e've setup the database, added some listings data, configured the admin area
 # **IMPORTANT** The idea here is to fetch our listings using our model and then we
@@ -30,7 +30,13 @@ def index(request):
 
 def listing(request, listing_id):
     """Need to pass listing_id parameter (above)"""
-    return render(request, 'listings/listing.html')
+    listing = get_object_or_404(Listing, pk=listing_id)
+
+    context = {
+        'listing': listing,
+    }
+
+    return render(request, 'listings/listing.html', context)
 
 
 def search(request):
