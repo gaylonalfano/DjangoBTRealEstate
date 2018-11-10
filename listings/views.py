@@ -7,6 +7,8 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 # model we want into any file we want and use it! In this case we want to bring in
 # our Listing model using from .models import Listing
 from .models import Listing
+# Import the Python dicts that are storing search form options (states, price, bedrooms, etc)
+from .choices import price_choices, state_choices, bedroom_choices
 
 # Already created the paths for listings, listing, and search
 # They use views methods we need to create:
@@ -40,5 +42,12 @@ def listing(request, listing_id):
 
 
 def search(request):
-    """Haven't updated"""
-    return render(request, 'listings/search.html')
+    """Similar to our pages index method to handle the search form"""
+    # Add search form choices to context
+    context = {
+        'state_choices': state_choices,
+        'price_choices': price_choices,
+        'bedroom_choices': bedroom_choices
+    }
+
+    return render(request, 'listings/search.html', context)
