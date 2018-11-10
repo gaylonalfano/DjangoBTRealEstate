@@ -15,5 +15,5 @@ urlpatterns = [
     # Create a path for search. It'll go to a method called search. Only need 'search/' (instead of listings/search)
     # since we're going to link it to the main urls.py and tell it that anything that has 'listings/' should
     # look at this file (we're basically using the include() method)
-    path('search', views.search, name='search')
+    path('search/', views.search, name='search')
 ]
