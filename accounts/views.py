@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
+# Need to bring in the messages app
+from django.contrib import messages
 
 
 def register(request):
     # Determine if request is a GET or POST
     if request.method == 'POST':  # A form submission
-        # Register User
-        pass
+        messages.error(request, "Testing error message")
+        return redirect('register')
     else:  # Just render the form
         return render(request, 'accounts/register.html')
 
