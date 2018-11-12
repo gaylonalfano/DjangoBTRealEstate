@@ -70,7 +70,11 @@ def login(request):
 
 def logout(request):
     # It won't render a template but instead redirect to index
-    return redirect('index')
+    # Logic to determine if it's a POST or GET request
+    if request.method == "POST":
+        auth.logout(request)
+        messages.success(request, "You have successfully logged out")
+        return redirect('index')
 
 
 def dashboard(request):
