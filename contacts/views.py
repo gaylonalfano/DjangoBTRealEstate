@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Contact
+from django.core.mail import send_mail
 from django.contrib import messages
 
 # Create your views here.
@@ -34,6 +35,13 @@ def contact(request):
 
         # Save the object
         contact.save()
+
+        # Send the email ONLY after save is successful. Need send_mail function
+        send_mail(
+            'Property Listing Inquiry: ' + listing, 'There has been an inquiry for ' +
+            listing + '. Sign into the admin panel for more info.',
+            'gaylon.alfano@gmail.com', [realtor_email, 'gaylon.alfano@concordiashanghai.org'], fail_silently=False
+        )
 
         # Display a message to the user that their request has been submitted
         messages.success(

@@ -150,3 +150,13 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+# Email config docs: https://docs.djangoproject.com/en/2.1/topics/email/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+# Actual Gmail address env variable.
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+# Actual Gmail password env variable.
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_USE_TLS = True

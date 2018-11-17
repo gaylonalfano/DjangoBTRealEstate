@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth  # auth for login after registering
 # Need to bring in Users
 from django.contrib.auth.models import User
+# Need Contact model so we can retrieve contacts for a user
+from contacts.models import Contact
 
 
 def register(request):
@@ -78,4 +80,5 @@ def logout(request):
 
 
 def dashboard(request):
+    # Need to bring in Contact model
     return render(request, 'accounts/dashboard.html')
