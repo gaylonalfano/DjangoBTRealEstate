@@ -160,3 +160,11 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 # Actual Gmail password env variable.
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 EMAIL_USE_TLS = True
+
+# For our server settings. If it finds the local_settings
+# file on the PRODUCTION server, then it will include it.
+# Else, it will just pass
+try:
+    from .local_settings import *
+except ImportError:
+    pass
