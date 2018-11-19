@@ -163,7 +163,7 @@ EMAIL_USE_TLS = True
 
 # For our server settings. If it finds the local_settings
 # file on the PRODUCTION server, then it will include it.
-# Else, it will just pass
+# Else, it will just pass.
 try:
     from .local_settings import *
 except ImportError:
